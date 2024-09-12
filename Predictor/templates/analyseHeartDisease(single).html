@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Analysis</title>
+    <link rel="icon" href="{% static 'assets/images/green_heart_logo.png' %}" />
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/stylesheet.css' %}" />
+
+    <style>
+      .fm-charts-color-1 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-2 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-3 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-4 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-5 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-6 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-7 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-8 {
+        fill: #222629 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <span class="logo">HEART DISEASE ANALYSIS</span>
+      </div>
+      <div class="header-right">
+        <a href="{% url 'Homepage' %}">Home</a>
+        <a href="{% url 'predictHeartDisease' %}">Predict</a>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="back-image">
+      <div class="block-100">
+        <div class="chart-100">
+          <div id="pivot-chart-container-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Flexmonster({
+        container: "#pivot-chart-container-1",
+        componentFolder: "https://cdn.flexmonster.com/",
+        width: "100%",
+        height: "100%",
+        toolbar: true,
+        report: {
+          dataSource: {
+            filename: "././static/datasets/heart_2020_analysis.json",
+          },
+          slice: {
+            rows: [
+              {
+                uniqueName: "Sex",
+              },
+              {
+                uniqueName: "HeartDisease",
+                caption: "Heart Disease",
+                filter: {
+                  exclude: ["HeartDisease.[No]"],
+                },
+              },
+            ],
+            columns: [
+              {
+                uniqueName: "Race",
+              },
+            ],
+            measures: [
+              {
+                uniqueName: "Sex",
+                aggregation: "count",
+              },
+            ],
+          },
+          options: {
+            viewType: "charts",
+            chart: {
+              type: "pie",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

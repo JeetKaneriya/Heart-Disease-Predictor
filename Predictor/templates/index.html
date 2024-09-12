@@ -1,0 +1,695 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease</title>
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}" />
+    <link rel="icon" href="{% static 'assets/images/green_heart_logo.png' %}" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <span class="logo">HEART DISEASE</span>
+      </div>
+      <div class="header-right">
+        <a href="{% url 'analyseHeartDisease' %}">Analysis</a>
+        <a href="{% url 'predictHeartDisease' %}">Predict</a>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="content">
+      <div class="block-1">
+        <h1>
+          With a<br />
+          <span>Healthy Heart,</span><br />
+          the beat goes on
+        </h1>
+        <div></div>
+      </div>
+      <div class="block-2">
+        <div class="block-2-card">
+          <div class="block-2-content">
+            <p>
+              <span>US Government</span><br />
+              <br />
+              says, “Heart disease is the leading cause of death for men, women,
+              and people of most racial and ethnic groups in USA”
+            </p>
+          </div>
+          <div class="block-2-line"></div>
+          <div class="block-2-content">
+            <p>
+              <span>Canadian Government</span><br />
+              <br />
+              says, “Heart disease is the 2nd leading cause of death in Canada”
+            </p>
+          </div>
+          <div class="block-2-line"></div>
+          <div class="block-2-content">
+            <p>
+              <span>World Health Organization</span><br />
+              <br />
+              says, “Globally, Cardiovascular diseases are the leading cause of
+              death, which contributes 32% of all the global deaths”
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="block-3">
+        <div class="block-3-line"></div>
+        <br />
+        <h1>
+          There are several different<br /><br />
+          <span class="block-3-heading">Types of Heart Disease</span
+          ><br /><br />
+          which affects the heart and blood vessels in different ways
+        </h1>
+        <div class="block-3-content">
+          <div class="block-3-row">
+            <div class="block-3-box">
+              <span class="block-3-subheading">Coronary Artery Disease</span>
+              <br />
+              <p>
+                Coronary artery disease also called coronary heart disease,
+                ischemic heart disease, myocardial ischemia, or simply heart
+                disease, involves the reduction of blood flow to the heart
+                muscle due to build-up of plaque (atherosclerosis) in the
+                arteries of the heart.
+              </p>
+
+              <p>It is the most common of the cardiovascular diseases.</p>
+
+              <p>Types include:</p>
+
+              <ul>
+                <li><strong>Stable Angina</strong></li>
+                <li><strong>Unstable Angina</strong></li>
+                <li><strong>Myocardial Infarction</strong></li>
+                <li><strong>Sudden Cardiac Death</strong></li>
+              </ul>
+            </div>
+            <div class="block-3-partition"></div>
+            <div class="block-3-box">
+              <span class="block-3-subheading">Congenital Heart Defects</span>
+              <br />
+              <p>
+                A congenital heart defect, also known as a congenital heart
+                anomaly and congenital heart disease, is a defect in the
+                structure of the heart or great vessels that is present at
+                birth.
+              </p>
+
+              <p>
+                Signs and symptoms can vary from none to life-threatening
+                depending on the specific type of defect.
+              </p>
+
+              <p>When present, symptoms may include:</p>
+
+              <ul>
+                <li><strong>Rapid Breathing</strong></li>
+                <li><strong>Bluish Skin (Cyanosis)</strong></li>
+                <li><strong>Poor Weight Gain</strong></li>
+                <li><strong>Feeling Tired</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="block-3-row">
+            <div class="block-3-box">
+              <span class="block-3-subheading">Arrhythmia</span>
+              <br />
+              <p>
+                Arrhythmias, also known as cardiac arrhythmias, heart
+                arrhythmias, or dysrhythmias, are irregularities in the
+                heartbeat, including when it is too fast or too slow.
+              </p>
+
+              <p>
+                A heart rate that is too fast – above 100 beats per minute in
+                adults – is called tachycardia, and a heart rate that is too
+                slow – below 60 beats per minute – is called bradycardia.
+              </p>
+
+              <p>
+                Some types of arrhythmias have no symptoms but, when present,
+                may include:
+              </p>
+
+              <ul>
+                <li><strong>Palpitations</strong></li>
+                <li><strong>Lightheadedness</strong></li>
+                <li><strong>Passing Out</strong></li>
+                <li><strong>Shortness of Breath</strong></li>
+                <li><strong>Chest Pain</strong></li>
+              </ul>
+            </div>
+            <div class="block-3-partition"></div>
+            <div class="block-3-box">
+              <span class="block-3-subheading">Dilated Cardiomyopathy</span>
+              <br />
+              <p>
+                Dilated cardiomyopathy is a condition in which the heart becomes
+                enlarged and cannot pump blood effectively.
+              </p>
+
+              <p>Symptoms vary from none to:</p>
+
+              <ul>
+                <li><strong>Feeling Tired</strong></li>
+                <li><strong>Leg Swelling</strong></li>
+                <li><strong>Fainting</strong></li>
+                <li><strong>Shortness of Breath</strong></li>
+                <li><strong>Chest Pain</strong></li>
+              </ul>
+
+              <p>
+                Complications can include heart failure, heart valve disease, or
+                an irregular heartbeat.
+              </p>
+            </div>
+          </div>
+          <div class="block-3-row">
+            <div class="block-3-box">
+              <span class="block-3-subheading">Myocardial Infarction</span>
+              <br />
+              <p>
+                A myocardial infarction, commonly known as a heart attack,
+                occurs when blood flow decreases or stops to the coronary artery
+                of the heart, causing damage to the heart muscle.
+              </p>
+
+              <p>The most common symptom is:</p>
+
+              <ul>
+                <li><strong>Chest Pain</strong></li>
+                <li><strong>Discomfort</strong></li>
+                <li><strong>Shortness of Breath</strong></li>
+                <li><strong>Nausea</strong></li>
+                <li><strong>Feeling Faint</strong></li>
+                <li><strong>Cold Sweat</strong></li>
+                <li><strong>Feeling Tired</strong></li>
+              </ul>
+
+              <p>
+                Often it occurs in the center or left side of the chest and
+                lasts for more than a few minutes. The discomfort may
+                occasionally feel like heartburn.
+              </p>
+            </div>
+            <div class="block-3-partition"></div>
+            <div class="block-3-box">
+              <span class="block-3-subheading">Heart Failure</span>
+              <br />
+              <p>
+                Heart failure, also known as congestive heart failure and
+                (congestive) cardiac failure, is a set of manifestations caused
+                by the failure of the heart's function as a pump supporting the
+                blood flow through the body.
+              </p>
+
+              <p>
+                Its signs and symptoms result from a structural and/or
+                functional abnormality of the heart, that disrupts its filling
+                with blood or its ejecting of it during each heart beat.
+              </p>
+
+              <p>Signs and symptoms of heart failure commonly include:</p>
+
+              <ul>
+                <li><strong>Shortness of Breath</strong></li>
+                <li><strong>Excessive Tiredness</strong></li>
+                <li><strong>Leg Swelling</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="block-3-row">
+            <div class="block-3-box">
+              <span class="block-3-subheading"
+                >Hypertrophic Cardiomyopathy</span
+              >
+              <br />
+              <p>
+                Hypertrophic cardiomyopathy is a condition in which the heart
+                becomes thickened without an obvious cause. The parts of the
+                heart most commonly affected are the interventricular septum and
+                the ventricles. This results in the heart being less able to
+                pump blood effectively and also may cause electrical conduction
+                problems.
+              </p>
+
+              <p>
+                People who have hypertrophic cardiomyopathy may be asymptomatic,
+                or may have:
+              </p>
+
+              <ul>
+                <li><strong>Fatigue</strong></li>
+                <li><strong>Leg Swelling</strong></li>
+                <li><strong>Shortness of Breath</strong></li>
+                <li><strong>Chest Pain</strong></li>
+                <li><strong>Fainting</strong></li>
+              </ul>
+            </div>
+            <div class="block-3-partition"></div>
+            <div class="block-3-box">
+              <span class="block-3-subheading">Mitral Valve Regurgitation</span>
+              <br />
+              <p>
+                Mitral regurgitation, also known as mitral insufficiency, or
+                mitral incompetence is a form of valvular heart disease in which
+                the mitral valve is insufficient and does not close properly
+                when the heart pumps out blood.
+              </p>
+
+              <p>
+                It is the abnormal leaking of blood backwards – regurgitation
+                from the left ventricle, through the mitral valve, into the left
+                atrium, when the left ventricle contracts.
+              </p>
+
+              <p>
+                Mitral regurgitation is the most common form of valvular heart
+                disease.
+              </p>
+            </div>
+          </div>
+          <div class="block-3-row" style="border-bottom: 0px">
+            <div class="block-3-box">
+              <span class="block-3-subheading">Mitral Valve Prolapse</span>
+              <br />
+              <p>
+                Mitral valve prolapse is a valvular heart disease characterized
+                by the displacement of an abnormally thickened mitral valve
+                leaflet into the left atrium during systole. It is the primary
+                form of myxomatous degeneration of the valve.
+              </p>
+
+              <p>
+                There are various types of mitral valve prolapse, broadly
+                classified as classic and nonclassic.
+              </p>
+
+              <p>
+                In severe cases of classic mitral valve prolapse, complications
+                include:
+              </p>
+
+              <ul>
+                <li><strong>Mitral Regurgitation</strong></li>
+                <li><strong>Infective Endocarditis</strong></li>
+                <li><strong>Congestive Heart Failure</strong></li>
+                <li><strong>Cardiac Arrest</strong></li>
+              </ul>
+            </div>
+            <div class="block-3-partition"></div>
+            <div class="block-3-box">
+              <span class="block-3-subheading">Aortic Stenosis</span>
+              <br />
+              <p>
+                Aortic stenosis is the narrowing of the exit of the left
+                ventricle of the heart (where the aorta begins), such that
+                problems result. It may occur at the aortic valve as well as
+                above and below this level. It typically gets worse over time.
+              </p>
+
+              <p>
+                Symptoms often come on gradually with a decreased ability to
+                exercise often occurring first. If
+              </p>
+
+              <ul>
+                <li><strong>Heart Failure</strong></li>
+                <li><strong>Loss of Consciousness</strong></li>
+                <li><strong>Heart Related Chest Pain</strong></li>
+              </ul>
+
+              <p>
+                occur due to aortic stenosis the outcomes are worse. Loss of
+                consciousness typically occurs with standing or exercising.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-4">
+        <h1>
+          <a>Signs and Symptoms</a><br /><br />
+          that could indicate heart disease
+        </h1>
+        <hr />
+        <div class="block-4-content">
+          <div class="block-4-row-2">
+            <div class="block-4-cell">
+              <span>Chest Pain</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Nausea</span>
+            </div>
+          </div>
+          <div class="block-4-row-3">
+            <div class="block-4-cell">
+              <span>Heart Palpitations</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Breathlessness</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Stomach Pain</span>
+            </div>
+          </div>
+          <div class="block-4-row-2">
+            <div class="block-4-cell">
+              <span>Discomfort in Back and Leg</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Arm and Jaw Pain</span>
+            </div>
+          </div>
+          <div class="block-4-row-3">
+            <div class="block-4-cell">
+              <span>Choking Sensation</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Swollen Ankles</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Irregular Heartbeat</span>
+            </div>
+          </div>
+          <div class="block-4-row-2">
+            <div class="block-4-cell">
+              <span>Fatigue</span>
+            </div>
+            <div class="block-4-cell">
+              <span>Sweating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-5">
+        <div class="block-5-line"></div>
+        <br />
+        <h1>
+          <a>Lifestyle Factors</a>
+          &nbsp;and&nbsp;
+          <a>Medical Conditions</a>
+          <br /><br />
+          which increase the risk of heart disease
+        </h1>
+        <div class="block-5-content">
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>High Blood Pressure</span>
+              <br />
+              <img src="{% static 'assets/images/blood_pressure.jpg' %}" />
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>High Intake of Alcohol</span>
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>Diabetes</span>
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>High Cholesterol</span>
+              <br />
+              <img src="{% static 'assets/images/cholesterol.jpg' %}" />
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>Smoking</span>
+              <br />
+              <img src="{% static 'assets/images/smoking.jpg' %}" />
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>Family History of Heart Disease</span>
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>History of Pre-eclampsia during Pregnancy</span>
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>Overweight and Obesity</span>
+              <br />
+              <img src="{% static 'assets/images/bmi_category.jpg' %}" />
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>Dietary Choices</span>
+              <br />
+              <img
+                src="{% static 'assets/images/fruits_and_vegetables.jpg' %}"
+              />
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>Sleep Apnea</span>
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>High Stress and Anxiety Levels</span>
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer">
+              <span>Age</span>
+              <br />
+              <img src="{% static 'assets/images/age_category.jpg' %}" />
+            </div>
+          </div>
+          <div class="block-5-row">
+            <div class="block-5-box-outer">
+              <span>Low Activity Levels</span>
+              <br />
+              <img src="{% static 'assets/images/physical_activity.jpg' %}" />
+            </div>
+            <div class="block-5-box-inner-left">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-inner-right">
+              <div class="block-5-box-inner-top"></div>
+              <div class="block-5-box-inner-bottom"></div>
+            </div>
+            <div class="block-5-box-outer" style="border-bottom: 0px">
+              <span>Leaky Heart Valves</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block-6">
+        <div class="block-6-line"></div>
+        <br />
+        <h1>
+          <a>Preventive Measures</a><br /><br />
+          to reduce the risk of heart disease
+        </h1>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">1</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Maintaining a Healthy Diet</span
+          >
+          <br />
+          <p>
+            Consuming diets such as the Mediterranean diet, a vegetarian, vegan
+            or another plant-based diet.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">2</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Replacing Saturated Fat with Healthier Choices</span
+          >
+          <br />
+          <p>
+            Lower intake of saturated fat coupled with higher intake of
+            polyunsaturated and monounsaturated fat is associated with lower
+            rates of heart disease.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">3</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Maintain a Moderate Body Weight</span
+          >
+          <br />
+          <p>A healthy body mass index (BMI) is typically between 20 and 25.</p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">4</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Stopping Smoking and Avoidance of Second-Hand Smoke</span
+          >
+          <br />
+          <p>
+            Smoking is a major risk factor for heart and cardiovascular
+            conditions.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">5</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Limit Alcohol Consumption to the Recommended Daily Limits</span
+          >
+          <br />
+          <p>
+            Women should consume no more than one standard drink per day, and
+            men should consume no more than two standard drinks per day.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">6</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Managing Underlying Conditions</span
+          >
+          <br />
+          <p>
+            Seek treatment for conditions that affect heart health, such as high
+            blood pressure, high cholesterol, and diabetes.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">7</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings">Exercising Regularly</span>
+          <br />
+          <p>
+            This can help strengthen the heart and circulatory system, reduce
+            cholesterol, and maintain blood pressure. A person may wish to aim
+            for 150 minutes of moderate exercise per week.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">8</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings"
+            >Decrease Psychosocial Stress</span
+          >
+          <br />
+          <p>
+            Severe emotional and physical stress leads to a form of heart
+            dysfunction and specific relaxation therapies are of unclear
+            benefit.
+          </p>
+        </div>
+        <div class="block-6-row">
+          <div class="block-6-bullet-point">
+            <span class="block-6-bullet-number">9</span>
+          </div>
+          <br />
+          <span class="block-6-bullet-headings">Have Enough Sleep</span>
+          <br />
+          <p>Adults need about 7 – 9 hours of sleep everyday.</p>
+        </div>
+        <div class="block-6-line"></div>
+      </div>
+      <div class="block-7">
+        <h1>Outlook</h1>
+        <hr />
+        <p>
+          Heart disease is treatable with initial treatment primarily focused on
+          diet and lifestyle interventions.
+        </p>
+        <p>
+          Influenza may make heart attacks and strokes more likely and therefore
+          influenza vaccination may decrease the chance of cardiovascular events
+          and death in people with heart disease.
+        </p>
+        <p>
+          In many cases, however, a person can take steps to prevent heart
+          disease and its complications. These steps include following a healthy
+          diet, getting plenty of exercise, and seeking advice when the first
+          symptoms of heart disease appear.
+        </p>
+      </div>
+      <div class="footer">
+        <b>
+          Website designed and developed by
+          <a
+            href="https://www.linkedin.com/in/jeet-kaneriya-9853b2240"
+            target="blank"
+            style="text-decoration: none"
+            >Jeet Kaneriya</a
+          >
+        </b>
+      </div>
+    </div>
+  </body>
+</html>

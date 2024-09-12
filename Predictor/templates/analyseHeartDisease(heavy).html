@@ -1,0 +1,750 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Analysis</title>
+    <link rel="icon" href="{% static 'assets/images/green_heart_logo.png' %}" />
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/stylesheet.css' %}" />
+
+    <style>
+      .fm-charts-color-1 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-2 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-3 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-4 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-5 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-6 {
+        fill: #222629 !important;
+      }
+      .fm-charts-color-7 {
+        fill: #86c232 !important;
+      }
+      .fm-charts-color-8 {
+        fill: #222629 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-left">
+        <span class="logo">HEART DISEASE ANALYSIS</span>
+      </div>
+      <div class="header-right">
+        <a href="{% url 'Homepage' %}">Home</a>
+        <a href="{% url 'predictHeartDisease' %}">Predict</a>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="back-image">
+      <div class="block-50">
+        <div class="chart-50">
+          <div
+            id="pivot-chart-container-1"
+            data-url="{% url 'pivot_data' %}"
+          ></div>
+        </div>
+        <div class="chart-50">
+          <div id="pivot-chart-container-2"></div>
+        </div>
+      </div>
+
+      <div class="block-100">
+        <div class="chart-100">
+          <div id="pivot-chart-container-3"></div>
+        </div>
+      </div>
+
+      <div class="block-25">
+        <div class="chart-50-block">
+          <div class="chart-50">
+            <div id="pivot-chart-container-4"></div>
+          </div>
+          <div class="chart-50">
+            <div id="pivot-chart-container-5"></div>
+          </div>
+        </div>
+        <div class="chart-50-block">
+          <div class="chart-50">
+            <div id="pivot-chart-container-6"></div>
+          </div>
+          <div class="chart-50">
+            <div id="pivot-chart-container-7"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-100">
+        <div class="chart-100">
+          <div id="pivot-chart-container-8"></div>
+        </div>
+      </div>
+
+      <div class="block-100">
+        <div class="chart-100">
+          <div id="pivot-chart-container-9"></div>
+        </div>
+      </div>
+
+      <div class="block-25">
+        <div class="chart-50-block">
+          <div class="chart-50">
+            <div id="pivot-chart-container-10"></div>
+          </div>
+          <div class="chart-50">
+            <div id="pivot-chart-container-11"></div>
+          </div>
+        </div>
+        <div class="chart-50-block">
+          <div class="chart-50">
+            <div id="pivot-chart-container-12"></div>
+          </div>
+          <div class="chart-50">
+            <div id="pivot-chart-container-13"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-50">
+        <div class="chart-25">
+          <div id="pivot-chart-container-14"></div>
+        </div>
+        <div class="chart-75">
+          <div id="pivot-chart-container-15"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function processData(dataset) {
+        return dataset;
+      }
+      $.ajax({
+        url: $("#pivot-chart-container-1").attr("data-url"),
+        dataType: "json",
+        success: function (data) {
+          new Flexmonster({
+            container: "#pivot-chart-container-1",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "Sex",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "Race",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "Sex",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-2",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "GenHealth",
+                    caption: "General Health",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "BMICategory",
+                    caption: "BMI Category",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "GenHealth",
+                    caption: "General Health",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-3",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "AgeCategory",
+                    caption: "Age Category",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "AgeCategory",
+                    caption: "Age Category",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "line",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-4",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "Diabetic",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "Diabetic",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "stacked_column",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-5",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "Asthma",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "Asthma",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "stacked_column",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-6",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "KidneyDisease",
+                    caption: "Kidney Disease",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "KidneyDisease",
+                    caption: "Kidney Disease",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "stacked_column",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-7",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "SkinCancer",
+                    caption: "Skin Cancer",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "SkinCancer",
+                    caption: "Skin Cancer",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "stacked_column",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-8",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "PhysicalHealth",
+                    caption: "Physical Health",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "PhysicalHealth",
+                    caption: "Physical Health",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "line",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-9",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "MentalHealth",
+                    caption: "Mental Health",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "MentalHealth",
+                    caption: "Mental Health",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "line",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-10",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "Smoking",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "Smoking",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-11",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "AlcoholDrinking",
+                    caption: "Alcohol Consumption",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "AlcoholDrinking",
+                    caption: "Alcohol Consumption",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-12",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "Stroke",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "Stroke",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-13",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "DiffWalking",
+                    caption: "Difficulty in Walking",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "DiffWalking",
+                    caption: "Difficulty in Walking",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-14",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "PhysicalActivity",
+                    caption: "Physical Activity",
+                  },
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                    filter: {
+                      exclude: ["HeartDisease.[No]"],
+                    },
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "PhysicalActivity",
+                    caption: "Physical Activity",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "pie",
+                },
+              },
+            },
+          });
+          new Flexmonster({
+            container: "#pivot-chart-container-15",
+            componentFolder: "https://cdn.flexmonster.com/",
+            width: "100%",
+            //toolbar: true,
+            report: {
+              dataSource: {
+                type: "json",
+                data: processData(data),
+              },
+              slice: {
+                rows: [
+                  {
+                    uniqueName: "SleepTime",
+                    caption: "Sleep Time",
+                  },
+                ],
+                columns: [
+                  {
+                    uniqueName: "HeartDisease",
+                    caption: "Heart Disease",
+                  },
+                ],
+                measures: [
+                  {
+                    uniqueName: "SleepTime",
+                    caption: "Sleep Time",
+                    aggregation: "count",
+                  },
+                ],
+              },
+              options: {
+                viewType: "charts",
+                chart: {
+                  type: "line",
+                },
+              },
+            },
+          });
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Predictor</title>
+    <link rel="stylesheet" href="{% static 'assets/css/stylesheet.css' %}" />
+    <link rel="icon" href="{% static 'assets/images/green_heart_logo.png' %}" />
+  </head>
+  <body>
+    <div class="header" id="myHeader">
+      <div class="header-left">
+        <span class="logo">HEART DISEASE PREDICTOR</span>
+      </div>
+      <div class="header-right">
+        <a href="{% url 'analyseHeartDisease' %}">Analysis</a>
+        <a href="{% url 'Homepage' %}">Home</a>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="back-image">
+      <div class="card">
+        <h1 class="prediction-heading-primary">
+          Check your Heart Condition instantly
+        </h1>
+        <h3 class="prediction-heading-secondary">
+          Please enter following details:
+        </h3>
+        <br />
+        <br />
+        <br />
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="predictHeartDisease#prediction"
+        >
+          {% csrf_token %} {% for field in form %}
+          <div
+            style="display: flex; flex-direction: column; align-items: center"
+          >
+            {% if field.label == "Have you ever had diabetes?" %}
+            <br />
+            <br />
+            <br />
+            <br />
+            <label class="question">{{ field.label }}</label>
+            {% elif field.label == "Do you have kidney disease?" %}
+            <br />
+            <br />
+            <br />
+            <br />
+            <label class="question">{{ field.label }}</label>
+            {% else %}
+            <label class="question">{{ field.label }}</label>
+            {% endif %}
+          </div>
+          {% if field.field.widget.input_type == "radio" %}
+          <fieldset class="inlineLabels">
+            <div class="radioboxcontainer">{{field}}</div>
+          </fieldset>
+          {% else %}
+          <br />
+          {{field}}
+          <br />
+          {% endif %}
+          <div>
+            {% if field.label == "Have you ever had diabetes?" %}
+            <p class="notice">
+              <strong>
+                Please enter following details only if you want to check your
+                diabetes online:
+              </strong>
+            </p>
+            {% elif field.label == "Do you have kidney disease?" %}
+            <p class="notice">
+              <strong>
+                Please enter following details only if you want to check for
+                kidney disease online:
+              </strong>
+            </p>
+            {% endif %}
+          </div>
+          {% endfor %}
+
+          <br />
+          <br />
+          <br />
+          <button><h3>Submit</h3></button>
+        </form>
+      </div>
+      <br />
+      {% if heart_prediction %}
+      <div class="prediction" id="prediction">
+        <p>Possibility of <strong>Kidney Disease</strong> =</p>
+        <span class="prediction-text">{{kidney_prediction}}</span>
+        <p>
+          ( with <strong>{{kidney_prediction_percentage}} %</strong> probability
+          )
+        </p>
+        <br />
+        <br />
+        <p>Possibility of <strong>Diabetes</strong> =</p>
+        <span class="prediction-text">{{diabetes_prediction}}</span>
+        <p>
+          ( with
+          <strong>{{diabetes_prediction_percentage}} %</strong> probability )
+        </p>
+        <br />
+        <br />
+        <p>Possibility of <strong>Heart Disease</strong> =</p>
+        <span class="prediction-text">{{heart_prediction}}</span>
+        <p>
+          ( with <strong>{{heart_prediction_percentage}} %</strong> probability
+          )
+        </p>
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      $(window).scroll(function (e) {
+        var $el = $(".header");
+        var isPositionFixed = $el.css("position") == "fixed";
+        if ($(this).scrollTop() > 200 && !isPositionFixed) {
+          $el.css({ position: "fixed", top: "0px" });
+        }
+        if ($(this).scrollTop() < 200 && isPositionFixed) {
+          $el.css({ position: "static", top: "0px" });
+        }
+      });
+    </script>
+  </body>
+</html>
